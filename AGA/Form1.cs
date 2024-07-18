@@ -25,7 +25,7 @@ namespace AGA
 
         private void InitializeFilterControls()
         {
-            // Создание текстовых полей для фильтров с подписями
+            // Текстовые поля для фильтров с подписями
             TableLayoutPanel filterPanel = new TableLayoutPanel();
             filterPanel.RowCount = 1;
             filterPanel.ColumnCount = 8;
@@ -60,7 +60,7 @@ namespace AGA
 
         private async void Form1_Load(object sender, EventArgs e)
         {
-            Console.WriteLine("Получаем задачи из сервиса...");
+            Console.WriteLine("Получаем задачи...");
             string url = "https://khakasia.bitrix24.ru/rest/1870/5l6u5im92ao6r42m/tasks.task.list?filter[GROUP_ID]=832";
             TaskFetcher taskFetcher = new TaskFetcher();
             tasks = await taskFetcher.FetchAllTasksAsync(url);
@@ -68,13 +68,13 @@ namespace AGA
             dataGridView1.DataSource = tasks;
         }
 
-        private void ApplyFilters(object sender, EventArgs e)
+        private void ApplyFilters(object sender, EventArgs e)  //Фильтрация
         {
-            List<Task> filteredTasks = tasks;
+            List<Task> filteredTasks = tasks;  
 
-            if (!string.IsNullOrEmpty(directionTextBox.Text))
+            if (!string.IsNullOrEmpty(directionTextBox.Text)) 
             {
-                filteredTasks = filteredTasks.Where(t => t.Direction.IndexOf(directionTextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+                filteredTasks = filteredTasks.Where(t => t.Direction.IndexOf(directionTextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0).ToList(); 
             }
 
             if (!string.IsNullOrEmpty(responsibleTextBox.Text))
@@ -86,12 +86,11 @@ namespace AGA
             {
                 filteredTasks = filteredTasks.Where(t => t.Stage.IndexOf(stageTextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
             }
-
-            if (!string.IsNullOrEmpty(deadlineTextBox.Text))
+            
+            if (!string.IsNullOrEmpty(stageTextBox.Text))
             {
-                filteredTasks = filteredTasks.Where(t => t.Deadline.IndexOf(deadlineTextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+                filteredTasks = filteredTasks.Where(t => t.Deadline.IndexOf(stageTextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
             }
-
             dataGridView1.DataSource = filteredTasks;
         }
     }
@@ -131,14 +130,14 @@ namespace AGA
                 {
                     Task task = new Task
                     {
-                        Direction = "Улучшение", // Пример значения, можно изменить по необходимости
-                        Consumer = "1 ОСНОВНЫЕ ПРОЦЕССЫ", // Пример значения, можно изменить по необходимости
+                        Direction = "Улучшение",  // Подстановка из запроса
+                        Consumer = "1 ОСНОВНЫЕ ПРОЦЕССЫ",  // Подстановка из запроса
                         Id = (string)item["id"],
                         Project = (string)item["title"],
                         Priority = (string)item["priority"],
                         Responsible = (string)item["responsible"]["name"],
-                        Stage = "Готово", // Пример значения, можно изменить по необходимости
-                        Deadline = "" // Пример значения, можно изменить по необходимости
+                        Stage = "Готово",  // Подстановка из запроса
+                        Deadline = (string)item["deadline"],  
                     };
 
                     allTasks.Add(task);

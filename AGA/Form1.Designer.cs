@@ -28,37 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.save_button = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // save_button
-            // 
-            this.save_button.Location = new System.Drawing.Point(1287, 697);
-            this.save_button.Name = "save_button";
-            this.save_button.Size = new System.Drawing.Size(172, 56);
-            this.save_button.TabIndex = 1;
-            this.save_button.Text = "Сохранить";
-            this.save_button.UseVisualStyleBackColor = true;
-            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 73);
+            this.dataGridView1.Location = new System.Drawing.Point(7, 45);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(1447, 572);
+            this.dataGridView1.Size = new System.Drawing.Size(1085, 535);
             this.dataGridView1.TabIndex = 2;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1471, 755);
+            this.ClientSize = new System.Drawing.Size(1103, 613);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.save_button);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -68,7 +57,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button save_button;
         private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
